@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Importação do CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card bg-dark text-white">
+                <div class="card-body p-5">
+                    <h3 class="card-title text-center mb-4">Login</h3>
+                    <form id="loginForm" action="/login" method="post"> <!-- A ação pode ser removida se estiver usando apenas JavaScript -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuário</label> <!-- Corrigido: atributo for para "username" -->
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Digite seu usuário" required> <!-- Corrigido: adicionado name="username" -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Senha</label> <!-- Corrigido: atributo for para "password" -->
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" required> <!-- Corrigido: adicionado name="password" -->
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn-1">
+                                <span class="text">Entrar</span>
+                                <svg class="arr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+                                <svg class="arr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/></svg>
+                                <span class="circle"></span>
+                            </button>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

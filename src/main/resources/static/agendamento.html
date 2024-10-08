@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - Barbearia</title>
+  <!-- Link para o arquivo de estilos CSS -->
+  <link rel="stylesheet" href="css/styleAgenda.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Agendar Serviço</h1>
+    <!-- Formulário de agendamento -->
+    <form id="agendamentoForm">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="contato">Número de Contato:</label>
+      <input type="tel" id="contato" name="contato" required>
+
+      <label for="cidade">Cidade:</label>
+      <input type="text" id="cidade" name="cidade" required>
+
+      <label for="servico">Tipo do Corte:</label>
+      <select id="servico" name="servico" required>
+        <option value="corte_degrade">Corte Degradê - R$ 40,00</option>
+        <option value="corte_social">Corte Social - R$ 35,00</option>
+        <option value="barba">Barba - R$ 30,00</option>
+        <option value="corte_barba">Corte e Barba - R$ 50,00</option>
+        <option value="corte_risco">Corte + Risco - a partir de R$ 45,00</option>
+        <option value="barba_pigmentacao">Barba + Pigmentação - R$ 70,00</option>
+        <option value="sobrancelha">Sobrancelha - R$ 10,00</option>
+        <option value="pezinho">Pezinho - R$ 15,00</option>
+      </select>
+
+      <label for="data">Data do Agendamento:</label>
+      <input type="date" id="data" name="data" required>
+
+      <label for="horario">Horário:</label>
+      <input type="time" id="horario" name="horario" required>
+
+      <button type="submit">Agendar</button>
+    </form>
+  </div>
+
+  <!-- Link para o arquivo JavaScript -->
+  <script src="js/agendamento.js"></script>
+</body>
+</html>

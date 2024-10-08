@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Variaveis */
+:root{
+--branco: white;
+--marron: brown;
+--cinza: gray;
+--preto: black;
+}
+
+body{
+    background-color: var(--branco);
+}
+
+
+
+/*
+*
+*   PAGINA DE LOGIN ABAIXO
+*
+*/
+
+/* Estilo do card */
+.card {
+    margin: auto;
+    width: 300px;
+    border: none; /* Sem bordas no card */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden; /* Esconde o excesso dos elementos animados */
+}
+
+/* Estilo do botão personalizado */
+.btn-1 {
+    position: relative; /* Necessário para posicionar elementos internos */
+    scale: 0.7; /* Aumenta o tamanho do botão */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    display: flex; /* Usado para alinhar itens no botão */
+    align-items: center; /* Alinha itens verticalmente */
+    gap: 8px; /* Espaçamento entre ícones e texto */
+    padding: 20px 40px; /* Aumenta o preenchimento do botão */
+    border: 4px solid; /* Borda do botão */
+    border-color: transparent; /* Borda inicialmente invisível */
+    font-size: 20px; /* Aumenta o tamanho da fonte */
+    background-color: inherit; /* Mantém a cor de fundo do botão */
+    border-radius: 100px; /* Bordas arredondadas */
+    font-weight: 400; /* Peso da fonte */
+    color: #f9f9f9; /* Cor do texto */
+    box-shadow: 0 0 0 2px; /* Sombra do botão */
+    cursor: pointer; /* Muda o cursor para indicar clicável */
+    overflow: hidden; /* Esconde a animação que sai do botão */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Transição suave para todas as propriedades */
+}
+
+/* Estilo dos SVGs dentro do botão */
+.btn-1 svg {
+    position: absolute; /* Permite que os ícones fiquem sobrepostos */
+    width: 24px; /* Largura dos ícones */
+    fill: --branco; /* Cor inicial dos ícones */
+    z-index: 9; /* Coloca os ícones sobre os outros elementos */
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); /* Transição suave para os ícones */
+}
+
+/* Posições iniciais dos ícones */
+.btn-1 .arr-1 {
+    right: 16px; /* Ícone da direita */
+}
+
+
+.btn-1 .arr-2 {
+    left: -25%; /* Ícone da esquerda */
+}
+
+/* Estilo do círculo animado */
+.btn-1 .circle {
+    position: absolute; /* Permite posicionar o círculo dentro do botão */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Centraliza o círculo */
+    width: 20px; /* Largura inicial do círculo */
+    height: 20px; /* Altura inicial do círculo */
+    background-color: var(--branco); /* Cor do círculo */
+    border-radius: 50%; /* Forma circular */
+    opacity: 0; /* Inicialmente invisível */
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); /* Transição suave */
+}
+
+/* Estilo do texto do botão */
+.btn-1 .text {
+    position: relative; /* Necessário para o efeito de movimento */
+    z-index: 1; /* Coloca o texto sobre outros elementos */
+    transform: translateX(-12px); /* Desloca o texto para a esquerda */
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1); /* Transição suave para o texto */
+}
+
+/* Efeitos de hover no botão */
+.btn-1:hover {
+    box-shadow: 0 0 0 12px transparent; /* Aumenta a sombra ao passar o mouse */
+    border-radius: 12px; /* Reduz as bordas ao passar o mouse */
+    color: var(--preto);
+}
+
+/* Efeitos de movimento dos ícones ao passar o mouse */
+.btn-1:hover .arr-1 {
+    right: -25%; /* Move o ícone da direita para fora */
+}
+
+.btn-1:hover .arr-2 {
+    left: 16px; /* Move o ícone da esquerda para dentro */
+}
+
+/* Efeito de movimento no texto ao passar o mouse */
+.btn-1:hover .text {
+    transform: translateX(12px); /* Move o texto para a direita */
+}
+
+/* Estilo dos ícones durante o hover */
+.btn-1 svg {
+    fill: var(--preto); /* Cor dos ícones durante o hover */
+}
+
+.btn-1:hover svg {
+    fill: var(--preto); /* Mantém a cor dos ícones no hover */
+}
+
+/* Efeito ao pressionar o botão */
+.btn-1:active {
+    scale: 0.95; /* Levemente reduz o tamanho ao pressionar */
+    box-shadow: 0 0 0 4px #8f44fd; /* Ajusta a sombra ao pressionar */
+}
+
+/* Efeito de animação no círculo ao passar o mouse */
+.btn-1:hover .circle {
+    width: 220px; /* Aumenta o tamanho do círculo ao passar o mouse */
+    height: 220px; /* Aumenta o tamanho do círculo ao passar o mouse */
+    opacity: 1; /* Torna o círculo visível */
+}
+
+/* Estilo do campo de formulário no foco */
+.form-control:focus {
+    border-color: #5e9fff; /* Cor da borda ao focar */
+    box-shadow: 0 0 5px rgba(94, 159, 255, 0.5); /* Sombra ao focar */
+}
+
+/* Estilo para links dentro do card */
+.card-body a {
+    color: white; /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+/* Estilo de hover para os links */
+.card-body a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+
+/*
+*
+*  FIM DA PAGINA DE LOGIN ACIMA
+*
+*/
