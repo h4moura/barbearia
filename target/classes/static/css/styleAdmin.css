@@ -1,0 +1,78 @@
+/* Estilos gerais do corpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilo do contêiner principal */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do painel */
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Estilos da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Estilo dos botões */
+.button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 5px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #218838; /* Cor do botão ao passar o mouse */
+}
+
+/* Estilo de mensagens de erro/sucesso */
+.message {
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

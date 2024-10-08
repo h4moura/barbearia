@@ -3,26 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel Administrativo</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Adicione seu CSS aqui -->
+  <title>Painel Administrador</title>
+  <link rel="stylesheet" href="css/styleAdmin.css"> <!-- Link para seu CSS -->
 </head>
 <body>
-<h1>Painel Administrativo - Agendamentos</h1>
+<h1>Painel Administrador</h1>
+
+<div id="summary">
+  <p>Total de Agendamentos: <span id="totalAgendamentos">0</span></p>
+  <p>Agendamentos de Hoje: <span id="agendamentosHoje">0</span></p>
+</div>
+
 <table id="agendamentosTable">
   <thead>
   <tr>
     <th>Nome</th>
-    <th>Número de Contato</th>
+    <th>Contato</th>
     <th>Cidade</th>
-    <th>Tipo do Corte</th>
-    <th>Data e Hora</th>
+    <th>Tipo de Corte</th>
+    <th>Data</th>
+    <th>Horário</th>
+    <th>Ações</th>
   </tr>
   </thead>
   <tbody>
-  <!-- Os dados dos agendamentos serão inseridos aqui via JavaScript -->
+  <!-- Os agendamentos serão inseridos aqui -->
   </tbody>
 </table>
 
-<script src="js/admin.js"></script> <!-- Adicione seu JavaScript aqui -->
+<div id="message"></div>
+
+<script src="js/admin.js"></script> <!-- Link para seu JavaScript -->
 </body>
 </html>

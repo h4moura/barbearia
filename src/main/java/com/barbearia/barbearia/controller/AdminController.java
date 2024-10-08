@@ -1,26 +1,28 @@
 package com.barbearia.barbearia.controller;
 
-
 import com.barbearia.barbearia.model.Agendamento;
 import com.barbearia.barbearia.repository.AgendamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController // Use @RestController para simplificar o uso de @Controller e @ResponseBody
+@CrossOrigin(origins = "http://localhost:3000") // Altere conforme necessário para permitir acesso CORS
+@RequestMapping("/api/admin/agendamentos") // Define o caminho base para os endpoints deste controlador
 public class AdminController {
 
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    @GetMapping("/admin")
-    public String adminPage(Model model){
+    // Endpoint para listar todos os agendamentos
+    @GetMapping
+    public ResponseEntity<List<Agendamento>> listarAgendamentos() {
         List<Agendamento> agendamentos = agendamentoRepository.findAll();
-        model.addAttribute("agendamentos", agendamentos);
-        return "admin";
+        return ResponseEntity.ok(agendamentos);
     }
-
 }

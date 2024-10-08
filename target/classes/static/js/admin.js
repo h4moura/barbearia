@@ -1,39 +1,94 @@
-// script.js
-
 // Função para buscar agendamentos do backend
 async function fetchAgendamentos() {
     try {
-        const response = await fetch('/api/agendamentos'); // URL do endpoint REST
+        const response = await fetch('/api/agendamentos'); // Ajuste a URL conforme necessário
         if (!response.ok) {
             throw new Error('Erro ao buscar agendamentos');
         }
-        const agendamentos = await response.json(); // Converte a resposta para JSON
-
-        // Chama a função para exibir agendamentos
-        displayAgendamentos(agendamentos);
+        const data = await response.json();
+        populateTable(data);
+        updateSummary(data);
     } catch (error) {
-        console.error('Erro:', error);
+        document.getElementById("message").innerText = "Erro ao carregar agendamentos.";
+        console.error('Error fetching agendamentos:', error);
     }
 }
 
-// Função para exibir agendamentos na tabela
-function displayAgendamentos(agendamentos) {
-    const tableBody = document.querySelector('#agendamentosTable tbody');
-    tableBody.innerHTML = ''; // Limpa o conteúdo atual da tabela
+function populateTable(agendamentos) {
+    const tableBody = document.getElementById('agendamentosTable').querySelector('tbody');
+    tableBody.innerHTML = ''; // Limpa a tabela
 
-    // Percorre cada agendamento e cria uma nova linha na tabela
     agendamentos.forEach(agendamento => {
         const row = document.createElement('tr');
+        const formattedDate = new Date(agendamento.data).toLocaleDateString('pt-BR');
+        const formattedTime = agendamento.horario; // A hora deve vir como string no formato "HH:mm"
+
         row.innerHTML = `
             <td>${agendamento.nome}</td>
             <td>${agendamento.contato}</td>
             <td>${agendamento.cidade}</td>
             <td>${agendamento.tipoCorte}</td>
-            <td>${new Date(agendamento.dataHora).toLocaleString('pt-BR')}</td>
+            <td>${formattedDate}</td>
+            <td>${formattedTime}</td>
+            <td>
+
+                <button class="button" onclick="excluir(${agendamento.id})">Excluir</button>
+            </td>
         `;
-        tableBody.appendChild(row); // Adiciona a nova linha ao corpo da tabela
+        tableBody.appendChild(row);
     });
 }
 
+// Função para atualizar as informações gerais
+function updateSummary(agendamentos) {
+    document.getElementById('totalAgendamentos').innerText = agendamentos.length;
+    const hoje = new Date();
+    const agendamentosHoje = agendamentos.filter(agendamento => {
+        const dataAgendamento = new Date(agendamento.data); // Ajustado para pegar a data corretamente
+        return dataAgendamento.getFullYear() === hoje.getFullYear() &&
+               dataAgendamento.getMonth() === hoje.getMonth() &&
+               dataAgendamento.getDate() === hoje.getDate();
+    });
+    document.getElementById('agendamentosHoje').innerText = agendamentosHoje.length;
+}
+
+// Funções para reagendar e excluir agendamentos (defina conforme necessário)
+function reagendar(id) {
+    console.log('Reagendar:', id);
+    // Lógica para reagendar
+}
+
+function excluir(id) {
+    console.log('Excluir:', id);
+    // Lógica para excluir
+}
+
 // Chama a função fetchAgendamentos quando a página é carregada
-document.addEventListener('DOMContentLoaded', fetchAgendamentos);
+document.addEventListener("DOMContentLoaded", fetchAgendamentos);
+
+
+
+// Função para excluir agendamentos
+async function excluir(id) {
+    const confirmacao = confirm('Tem certeza que deseja excluir este agendamento?');
+    if (confirmacao) {
+        try {
+            const response = await fetch(`/api/agendamentos/${id}`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) {
+                throw new Error('Erro ao excluir agendamento');
+            }
+            // Recarregar os agendamentos após a exclusão
+            fetchAgendamentos();
+        } catch (error) {
+            document.getElementById("message").innerText = "Erro ao excluir agendamento.";
+            console.error('Error excluding agendamento:', error);
+        }
+    }
+}
+
+function reagendar(id) {
+    // Redireciona para a página de reagendamento com o ID do agendamento na URL
+        window.location.href = `reagendar.html?id=${id}`;
+}

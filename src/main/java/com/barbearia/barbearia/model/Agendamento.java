@@ -1,7 +1,6 @@
 package com.barbearia.barbearia.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -17,15 +16,14 @@ public class Agendamento {
     private String cidade;
     private String tipoCorte;
 
-    @Column(name = "date")
-    private LocalDate date;
+    // Alterando o nome da coluna para evitar conflitos
+    @Column(name = "data_agendamento")
+    private LocalDate data;
 
     @Column(name = "horario")
     private LocalTime horario;
 
-    //Getters e Setters
-
-
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -66,12 +64,12 @@ public class Agendamento {
         this.tipoCorte = tipoCorte;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public LocalTime getHorario() {
