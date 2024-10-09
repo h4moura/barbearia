@@ -47,3 +47,13 @@
     button:hover {
       background-color: #0056b3;
     }
+
+
+    /* Estiliza o popup do flatpickr para hora e data */
+    .flatpickr-calendar {
+        z-index: 9999 !important; /* Garante que o popup esteja acima de outros elementos */
+        position: absolute !important; /* Posiciona o calendário absoluto em relação ao campo */
+        top: 100%; /* Faz com que o popup apareça logo abaixo do campo de input */
+        left: 0; /* Alinha o popup à esquerda do input */
+        width: auto; /* Ajusta a largura do popup conforme necessário */
+    }

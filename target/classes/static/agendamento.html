@@ -6,6 +6,7 @@
   <title>Agendamento - Barbearia</title>
   <!-- Link para o arquivo de estilos CSS -->
   <link rel="stylesheet" href="css/styleAgenda.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
   <div class="container">
@@ -34,10 +35,10 @@
       </select>
 
       <label for="data">Data do Agendamento:</label>
-      <input type="date" id="data" name="data" required>
+      <input type="text" id="data" placeholder="Selecione a data">
 
       <label for="horario">Horário:</label>
-      <input type="time" id="horario" name="horario" required>
+      <input type="text" id="horario" placeholder="Selecione o horário">
 
       <button type="submit">Agendar</button>
     </form>
@@ -45,5 +46,7 @@
 
   <!-- Link para o arquivo JavaScript -->
   <script src="js/agendamento.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
 </body>
 </html>

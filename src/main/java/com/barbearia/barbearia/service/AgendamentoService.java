@@ -5,6 +5,8 @@ import com.barbearia.barbearia.repository.AgendamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,29 @@ public class AgendamentoService {
         if (agendamento.getNome() == null || agendamento.getNome().isEmpty()) {
             throw new IllegalArgumentException("O nome é obrigatório.");
         }
-        // Adicione mais validações conforme necessário
+
+        // Pegar o dia da semana
+        DayOfWeek diaDaSemana = agendamento.getData().getDayOfWeek();
+        LocalTime horario = agendamento.getHorario();
+
+        // Regras para terça e quinta (09:00 às 17:00)
+        if (diaDaSemana == DayOfWeek.TUESDAY || diaDaSemana == DayOfWeek.THURSDAY) {
+            if (horario.isBefore(LocalTime.of(9, 0)) || horario.isAfter(LocalTime.of(17, 0))) {
+                throw new IllegalArgumentException("Agendamentos em terça e quinta são permitidos apenas das 09:00 às 17:00.");
+            }
+        }
+
+        // Regras para quarta, sexta e sábado (09:00 às 20:00)
+        if (diaDaSemana == DayOfWeek.WEDNESDAY || diaDaSemana == DayOfWeek.FRIDAY || diaDaSemana == DayOfWeek.SATURDAY) {
+            if (horario.isBefore(LocalTime.of(9, 0)) || horario.isAfter(LocalTime.of(20, 0))) {
+                throw new IllegalArgumentException("Agendamentos em quarta, sexta e sábado são permitidos apenas das 09:00 às 20:00.");
+            }
+        }
+
+        // Não permitir agendamentos aos domingos e segundas-feiras
+        if (diaDaSemana == DayOfWeek.SUNDAY || diaDaSemana == DayOfWeek.MONDAY) {
+            throw new IllegalArgumentException("Agendamentos não são permitidos aos domingos e segundas-feiras.");
+        }
     }
 
     public void excluir(Long id) {

@@ -75,3 +75,68 @@ document.getElementById('agendamentoForm').addEventListener('submit', function (
       alert('Erro ao conectar com o servidor.');  // Exibimos uma mensagem de erro ao usuário, informando que houve falha na conexão.
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Configuração do campo de calendário (data)
+    flatpickr("#data", {
+        locale: "pt",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        disable: [
+            function (date) {
+                // Desabilita domingo (0) e segunda (1)
+                const day = date.getDay();
+                return day === 0 || day === 1;
+            }
+        ],
+        onDayCreate: function (dObj, dStr, fp, dayElem) {
+            const date = new Date(dayElem.dateObj);
+            const day = date.getDay();
+
+            // Destaca domingo e segunda em vermelho
+            if (day === 0 || day === 1) {
+                dayElem.style.backgroundColor = "#ffdddd";
+                dayElem.style.color = "#ff0000";
+            }
+        }
+    });
+
+    // Configuração do campo de horário
+    flatpickr("#horario", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+        onOpen: function(selectedDates, dateStr, instance) {
+            const dataSelecionada = document.querySelector("#data")._flatpickr.selectedDates[0];
+            if (!dataSelecionada) {
+                alert("Por favor, selecione uma data antes de escolher o horário.");
+                instance.close();
+                return;
+            }
+
+            const day = dataSelecionada.getDay();
+            if (day === 2 || day === 4) {
+                // Terça e quinta: horário permitido das 09:00 às 17:00
+                instance.set({
+                    minTime: "09:00",
+                    maxTime: "17:00"
+                });
+            } else if (day === 3 || day === 5 || day === 6) {
+                // Quarta, sexta e sábado: horário permitido das 09:00 às 20:00
+                instance.set({
+                    minTime: "09:00",
+                    maxTime: "20:00"
+                });
+            } else {
+                alert("Agendamentos só podem ser feitos de terça a sábado.");
+                instance.clear();
+                instance.close();
+            }
+        }
+    });
+});
+
+
+
+
